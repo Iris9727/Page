@@ -1,9 +1,9 @@
 /*
  * 通用配置
- * @Author: 56 
- * @Date: 2018-08-22 18:39:53 
+ * @Author: 56
+ * @Date: 2018-08-22 18:39:53
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-26 15:33:18
+ * @Last Modified time: 2018-08-26 16:14:04
  */
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -12,7 +12,7 @@ const getPath = p => path.join(__dirname, '..', p)
 
 module.exports = {
   // 主入口
-  entry: getPath('src/index.ts'),
+  entry: getPath('src/index.js'),
 
   // 输出路径
   output: {
@@ -29,6 +29,21 @@ module.exports = {
         include: getPath('src'),
         use: [{ loader: 'ts-loader', options: { transpileOnly: true } }],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/,
+        include: getPath('src'),
+        use: [
+          { loader: 'babel-loader' },
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: require('eslint-friendly-formatter'), // 默认的错误提示方式
+            },
+          },
+        ],
+        enforce: 'pre', // 编译前检查
+        exclude: [/node_modules/, /configs/],
       },
       {
         test: /\.pug$/,
