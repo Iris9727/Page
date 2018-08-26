@@ -3,7 +3,7 @@
  * @Author: 56
  * @Date: 2018-08-26 11:11:09
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-26 17:35:35
+ * @Last Modified time: 2018-08-26 21:16:41
  */
 
 // 左布局
@@ -11,6 +11,7 @@ $lef-width: 530px;
 // 菜单相关
 $menu-width: 160px;
 $menu-border: #999;
+$menu-color: #333;
 $menu-icon-size: 24px;
 // 个人资料相关
 $avatar-size: 200px;
@@ -52,7 +53,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 1rem;
+  font-size: 24px;
   height: $menu-width;
   width: $menu-width;
   border-left: solid 1px $menu-border;
@@ -104,7 +105,7 @@ body {
         &:focus,
         &:hover,
         &:visited {
-          color: #333;
+          color: $menu-color;
         }
       }
     }
@@ -117,7 +118,7 @@ body {
 .person-info {
   position: absolute;
   left: 270px;
-  top: 353px;
+  top: 345px;
   .person-avatar {
     float: left;
     border-radius: 50%;
@@ -127,6 +128,7 @@ body {
   .person-introduce {
     float: right;
     margin-left: 81px;
+    margin-top: -10px;
     color: $normal-color;
     font-weight: bold;
     span {
@@ -135,11 +137,12 @@ body {
     .person-resume {
       height: 28px;
       line-height: 28px;
-      width: 80px;
+      width: 100px;
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       background-color: $normal-color;
       color: white;
+      border-radius: 3px;
     }
     .person-position {
       color: $strong-color;
