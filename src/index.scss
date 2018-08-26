@@ -1,3 +1,102 @@
-h1 {
-  color: red;
+/*
+ * 样式文件
+ * @Author: 56 
+ * @Date: 2018-08-26 11:11:09 
+ * @Last Modified by: 56
+ * @Last Modified time: 2018-08-26 15:08:02
+ */
+
+$lef-width: 530px;
+// 菜单相关
+$menu-width: 160px;
+$menu-border: #999;
+$menu-icon-size: 24px;
+body {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+////
+//// 左布局
+////
+.left-layout {
+  height: 100vh;
+  width: $lef-width;
+  background-color: black;
+}
+
+////
+//// 内容主体
+////
+.content-layout {
+  height: 100vh;
+  width: calc(100vw - #{$lef-width});
+}
+
+////
+//// 菜单布局
+////
+.menu-layout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 24px;
+  height: $menu-width;
+  width: $menu-width;
+  border-left: solid 1px $menu-border;
+  transition: height ease 0.5s;
+  box-sizing: border-box;
+  /*
+   * 菜单图标
+   */
+  .menu-icon {
+    position: relative;
+    height: $menu-width;
+    width: $menu-width;
+    background-color: $menu-border;
+    &::after {
+      position: absolute;
+      content: ' ';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      height: $menu-icon-size;
+      width: $menu-icon-size;
+      background: url('./assets//menu.png') no-repeat no-repeat;
+      cursor: pointer;
+    }
+  }
+  &.expand {
+    height: 100vh;
+  }
+  /**
+   * 菜单列表
+   */
+  .menus {
+    list-style: none;
+    text-align: center;
+    .menu-item {
+      margin-top: 94px;
+      transform: rotate(90deg);
+      &:first-child {
+        margin-top: 184px;
+      }
+      a {
+        text-decoration: none;
+        color: $menu-border;
+        font-weight: 600;
+        transition: color ease 0.2s;
+        &:focus,
+        &:hover,
+        &:visited {
+          color: #333;
+        }
+      }
+    }
+  }
 }

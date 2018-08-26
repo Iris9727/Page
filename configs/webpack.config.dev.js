@@ -3,7 +3,7 @@
  * @Author: 56 
  * @Date: 2018-08-21 23:31:49 
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-22 20:26:22
+ * @Last Modified time: 2018-08-26 11:19:14
  */
 const webpack = require('webpack')
 const merge = require('webpack-merge')
@@ -31,13 +31,11 @@ module.exports = merge(BaseConfig, {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(), // 热加载
     new HtmlWebpackPlugin({
-      title: '唔。',
       filename: 'index.html', // 输出名
       template: 'src/index.pug', // html模板
     }),
     new WebpackDevServerOutput({
       path: './dist',
-      isDel: true,
     }),
   ],
 
