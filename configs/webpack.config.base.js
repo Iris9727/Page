@@ -3,7 +3,7 @@
  * @Author: 56
  * @Date: 2018-08-22 18:39:53
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-26 16:14:04
+ * @Last Modified time: 2018-08-26 21:30:00
  */
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -17,8 +17,8 @@ module.exports = {
   // 输出路径
   output: {
     path: getPath('dist'), // 文件输出路径
-    filename: '[name].js', // 输出文件名
-    publicPath: '/assets', // 静态资源输出路径
+    filename: 'assets/[name].js', // 输出文件名
+    publicPath: '/', // 静态资源输出路径
   },
 
   // 相关loader
@@ -54,7 +54,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         // 图片加载器 配置图片到img文件夹中
         // 其中 8KB以下的图片转成base64
-        loader: 'url-loader?limit=8192&name=img/[name].[ext]',
+        loader: 'url-loader?limit=8192&name=assets/[name].[ext]',
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
