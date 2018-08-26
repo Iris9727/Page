@@ -3,18 +3,18 @@
  * @Author: 56 
  * @Date: 2018-08-21 23:31:49 
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-26 11:19:14
+ * @Last Modified time: 2018-08-26 15:43:05
  */
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackDevServerOutput = require('webpack-dev-server-output')
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 
 const BaseConfig = require('./webpack.config.base')
 
 module.exports = merge(BaseConfig, {
   // 输出配置
-  devtool: 'inline-source-map', // 内联 sourceMap
+  devtool: 'cheap-module-eval-source-map',
 
   // loader加载器相关
   module: {
@@ -33,10 +33,10 @@ module.exports = merge(BaseConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html', // 输出名
       template: 'src/index.pug', // html模板
+      alwaysWriteToDisk: true,
+      inject: true,
     }),
-    new WebpackDevServerOutput({
-      path: './dist',
-    }),
+    new HtmlWebpackHarddiskPlugin(),
   ],
 
   // 开发服务器
