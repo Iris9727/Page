@@ -3,7 +3,7 @@
  * @Author: 56
  * @Date: 2018-08-26 11:11:09
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-27 20:05:51
+ * @Last Modified time: 2018-08-27 20:19:23
  */
 
 // 媒体选择器断点
@@ -116,15 +116,16 @@ img {
    * 菜单列表
    */
   .menus {
-    $margin-top: 4.7rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    flex-direction: column;
     list-style: none;
     text-align: center;
     .menu-item {
-      margin-top: $margin-top;
+      margin-top: 4.7rem;
       transform: rotate(90deg);
-      &:first-child {
-        margin-top: $margin-top * 2;
-      }
       a {
         text-decoration: none;
         color: $menu-border;
@@ -144,15 +145,10 @@ img {
 //// 个人资料介绍
 ////
 .person-info {
-  $height: 15rem;
-  $width: 42.5rem;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: $width / -2;
-  margin-top: $height / -2;
-  width: $width;
-  height: $height;
+  transform: translate3d(-50%, -50%, 0);
   display: flex;
   .person-avatar {
     border-radius: 50%;
@@ -181,6 +177,7 @@ img {
       color: $strong-color;
       font-size: 5rem;
       line-height: 7rem;
+      white-space: nowrap;
     }
     .person-motto {
       font-size: 0.9rem;
