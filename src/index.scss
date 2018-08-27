@@ -3,21 +3,44 @@
  * @Author: 56
  * @Date: 2018-08-26 11:11:09
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-26 22:22:13
+ * @Last Modified time: 2018-08-27 20:05:51
  */
 
+// 媒体选择器断点
+$breakpoints: ( 'small': '1200px', 'middle': '1600px', 'large': '1920px', );
 // 左布局
-$lef-width: 530px;
+$lef-width: 26.5rem;
 // 菜单相关
-$menu-width: 160px;
+$menu-width: 8rem;
 $menu-border: #999;
 $menu-color: #333;
 $menu-icon-size: 24px;
 // 个人资料相关
-$avatar-size: 200px;
+$avatar-size: 10rem;
 $strong-color: #1a1a1a;
 $normal-color: #999;
-$normal-width: 366px;
+$normal-width: 18.3rem;
+@media (max-width: map-get($map: $breakpoints, $key: 'large')) {
+  html,
+  body {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: map-get($map: $breakpoints, $key: 'middle')) {
+  html,
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: map-get($map: $breakpoints, $key: 'small')) {
+  html,
+  body {
+    font-size: 12px;
+  }
+}
+
 // 主布局
 body {
   height: 100vh;
@@ -26,6 +49,10 @@ body {
   display: flex;
   overflow: hidden;
   font-family: Arial, 'Microsoft Yahei';
+}
+
+img {
+  max-width: 100%;
 }
 
 ////
@@ -43,7 +70,7 @@ body {
 .content-layout {
   height: 100vh;
   position: relative;
-  width: calc(100vw - #{$lef-width});
+  width: calc(100vw - #{$lef-width} - #{$menu-width});
 }
 
 ////
@@ -53,7 +80,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 24px;
+  font-size: 1.2rem;
   height: $menu-width;
   width: $menu-width;
   border-left: solid 1px $menu-border;
@@ -89,7 +116,7 @@ body {
    * 菜单列表
    */
   .menus {
-    $margin-top: 94px;
+    $margin-top: 4.7rem;
     list-style: none;
     text-align: center;
     .menu-item {
@@ -117,50 +144,55 @@ body {
 //// 个人资料介绍
 ////
 .person-info {
+  $height: 15rem;
+  $width: 42.5rem;
   position: absolute;
-  left: 270px;
-  top: 345px;
+  left: 50%;
+  top: 50%;
+  margin-left: $width / -2;
+  margin-top: $height / -2;
+  width: $width;
+  height: $height;
+  display: flex;
   .person-avatar {
-    float: left;
     border-radius: 50%;
     height: $avatar-size;
     width: $avatar-size;
   }
   .person-introduce {
-    float: right;
-    margin-left: 81px;
-    margin-top: -10px;
+    margin-left: 4rem;
+    margin-top: -0.5rem;
     color: $normal-color;
     font-weight: bold;
     span {
       display: block;
     }
     .person-resume {
-      height: 28px;
-      line-height: 28px;
-      width: 100px;
+      height: 1.4rem;
+      line-height: 1.4rem;
+      width: 5rem;
       text-align: center;
-      font-size: 18px;
+      font-size: 0.9rem;
       background-color: $normal-color;
       color: white;
       border-radius: 3px;
     }
     .person-position {
       color: $strong-color;
-      font-size: 100px;
-      line-height: 140px;
+      font-size: 5rem;
+      line-height: 7rem;
     }
     .person-motto {
-      font-size: 18px;
-      line-height: 26px;
-      margin-top: 10px;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      margin-top: 0.5rem;
       width: $normal-width;
       letter-spacing: -0.25px;
     }
     .person-email {
-      font-size: 20px;
-      line-height: 28px;
-      margin-top: 30px;
+      font-size: 1rem;
+      line-height: 1.4rem;
+      margin-top: 1.5rem;
       width: $normal-width;
       color: #333;
     }
