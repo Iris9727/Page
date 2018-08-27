@@ -9,8 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 绑定交互事件
   const $menuLayout = document.getElementById('js-menu-layout')
-  const $menu = document.getElementById('js-menu')
-  $menu.addEventListener('click', () => $menuLayout.classList.toggle('expand'))
+  const $menu = $menuLayout.lastChild
+  const $menuIcon = $menuLayout.firstChild
+  $menuIcon.addEventListener('click', () => {
+    if ($menu.classList.contains('fade-in')) {
+      $menu.classList.remove('fade-in')
+      $menu.classList.add('fade-out')
+    } else {
+      $menu.classList.add('fade-in')
+      $menu.classList.remove('fade-out')
+    }
+    $menuLayout.classList.toggle('expand')
+  })
 
   document.body.style.display = 'flex'
 })

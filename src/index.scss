@@ -3,7 +3,7 @@
  * @Author: 56
  * @Date: 2018-08-26 11:11:09
  * @Last Modified by: 56
- * @Last Modified time: 2018-08-27 20:29:01
+ * @Last Modified time: 2018-08-27 20:57:14
  */
 
 // 媒体选择器断点
@@ -20,6 +20,8 @@ $avatar-size: 10rem;
 $strong-color: #1a1a1a;
 $normal-color: #999;
 $normal-width: 18.3rem;
+// 动画时长
+$animation-duration: 0.2s;
 @media (max-width: map-get($map: $breakpoints, $key: 'large')) {
   html,
   body {
@@ -39,6 +41,45 @@ $normal-width: 18.3rem;
   body {
     font-size: 12px;
   }
+}
+
+// 动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  1% {
+    opacity: 0;
+    display: block;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  99% {
+    opacity: 0;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.fade-in {
+  animation: $animation-duration fadeIn ease forwards;
+}
+
+.fade-out {
+  animation: $animation-duration fadeOut ease forwards;
 }
 
 // 主布局
@@ -81,21 +122,18 @@ img {
   top: 0;
   right: 0;
   font-size: 1.2rem;
-  height: $menu-width;
   width: $menu-width;
-  border-left: solid 1px $menu-border;
-  transition: height ease 0.5s;
+  height: 100vh;
   box-sizing: border-box;
-  overflow: hidden;
   /*
    * 菜单图标
    */
-  .menu-icon {
+  .menu-icon-layout {
     position: relative;
     height: $menu-width;
     width: $menu-width;
     background-color: $menu-border;
-    &::after {
+    .menu-icon {
       position: absolute;
       content: ' ';
       top: 0;
@@ -105,16 +143,27 @@ img {
       margin: auto;
       height: $menu-icon-size;
       width: $menu-icon-size;
-      background: url('./assets//menu.png') no-repeat no-repeat;
+      background: url('./assets/menu.png') no-repeat no-repeat;
       cursor: pointer;
+      transition: all $animation-duration ease;
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
   &.expand {
-    height: 100vh;
+    >.menus {
+      display: block;
+    }
   }
   /**
    * 菜单列表
    */
+  .menus-layout {
+    height: calc(100vh - #{$menu-width});
+    border-left: solid 1px $menu-border;
+    position: relative;
+  }
   .menus {
     position: absolute;
     top: 50%;
@@ -130,10 +179,11 @@ img {
         text-decoration: none;
         color: $menu-border;
         font-weight: 600;
-        transition: color ease 0.2s;
+        transition: all $animation-duration ease;
         &:focus,
         &:hover {
           color: $menu-color;
+          transform: scale(1.2);
         }
       }
     }
