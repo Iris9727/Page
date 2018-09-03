@@ -1,6 +1,36 @@
+- var arr = [
+-  {
+-    companyName: '无锡文思海辉信息技术有限公司',
+-    duration: '2018.07-至今',
+-    position: '视觉设计师',
+-    desc: '参与别克(BUICK)车载系统的UI设计;\n与客户方深入沟通,根据客户需求,制作出符合要求的设计稿;\n与团队亲密配合,实时对接产品与开发;\n按时完成每周指定的工作计划,严谨认真',
+-  },
+-  {
+-    companyName: '宁波宽易天地信息科技有限公司',
+-    duration: '2018.03-2018.07',
+-    position: '视觉设计师',
+-    desc: '负责公司及相关政府网站界面的改版设计;\n与项目团队配合,把控界面最终实现效果;\n协助产品,根据项目周期严格推进项目',
+-  },
+-  {
+-    companyName: '杭州润泉纺织品有限公司',
+-    duration: '2017.09-2018.03',
+-    position: '平面设计',
+-    desc: '负责公司日常活动的物料设计;\n处理公司公众号的日常配图,视频',
+-  },
+- ]
+
 div.left-layout
   //- 经历介绍
   div#js-experience
 
-  //- 文字区域  
-  div#js-textarea
+  //- 文字区域
+  div#js-textarea.position-introduce-layout
+    div.position-slide
+    aside
+      for o in arr
+        section
+          h3= o.companyName
+          h6
+            time= o.duration
+          span 岗位: #{o.position}
+          p= o.desc
